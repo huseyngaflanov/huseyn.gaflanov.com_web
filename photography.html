@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huseyn Gaflanov</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <nav>
+      <span class="nav-name"><a href="index.html">Huseyn Gaflanov</a></span>
+      <div class="nav-links">
+        <a href="photography.html">Photos</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+      </div>
+    </nav>
+
+    <main>
+      <div id="gallery"></div>
+      <div id="loading" class="loading">Loading photos...</div>
+    </main>
+
+    <!-- Fullscreen view -->
+    <div class="fs-view" id="fs-view">
+      <div class="fs-backdrop" onclick="closeFS()"></div>
+      <div class="fs-content">
+        <div class="fs-spinner" id="fs-spinner">
+          <div class="spinner"></div>
+        </div>
+        <img src="" id="fs-view-img" alt="">
+        <div class="fs-controls">
+          <button class="fs-btn" id="fs-prev" onclick="prevPhoto()">&#8592;</button>
+          <button class="fs-btn fs-btn-close" onclick="closeFS()">&#x2715;</button>
+          <button class="fs-btn fs-btn-download" id="fs-download">&#8595; Download</button>
+          <button class="fs-btn" id="fs-next" onclick="nextPhoto()">&#8594;</button>
+        </div>
+        <div class="fs-counter" id="fs-counter"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
