@@ -4,6 +4,8 @@ const fsViewImage = document.getElementById('fs-view-img');
 const fsCounter = document.getElementById('fs-counter');
 const fsDownload = document.getElementById('fs-download');
 const fsSpinner = document.getElementById('fs-spinner');
+const fsExif = document.getElementById('fs-exif');
+const fsExifLoading = document.getElementById('fs-exif-loading');
 const loading = document.getElementById('loading');
 
 const BASE_URL = 'https://pub-b18bf20fb6ff4e5c89ebcf08c3f1d603.r2.dev';
@@ -51,16 +53,84 @@ function closeFS() {
   document.body.style.overflow = '';
 }
 
+function formatShutter(val) {
+  if (!val) return null;
+  if (val >= 1) return `${val}s`;
+  return `1/${Math.round(1 / val)}s`;
+}
+
+function formatDate(val) {
+  if (!val) return null;
+  const d = new Date(val);
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function exifRow(label, value) {
+  if (!value) return '';
+  return `
+    <div class="fs-exif-row">
+      <span class="fs-exif-label">${label}</span>
+      <span class="fs-exif-value">${value}</span>
+    </div>
+  `;
+}
+
+async function loadExif(url) {
+  // Reset panel
+  fsExifLoading.style.display = 'block';
+  const existing = fsExif.querySelectorAll('.fs-exif-row');
+  existing.forEach(el => el.remove());
+
+  try {
+    const exifr = await import('https://cdn.jsdelivr.net/npm/exifr@7/dist/full.esm.js');
+    const data = await exifr.parse(url, {
+      tiff: true, exif: true, gps: false,
+      pick: ['Make', 'Model', 'LensModel', 'FNumber', 'ExposureTime',
+             'ISO', 'FocalLength', 'DateTimeOriginal', 'ExposureProgram',
+             'MeteringMode', 'Flash', 'WhiteBalance']
+    });
+
+    fsExifLoading.style.display = 'none';
+
+    if (!data) {
+      fsExifLoading.textContent = 'No EXIF data found.';
+      fsExifLoading.style.display = 'block';
+      return;
+    }
+
+    const camera = [data.Make, data.Model].filter(Boolean).join(' ');
+    const aperture = data.FNumber ? `f/${data.FNumber}` : null;
+    const shutter = formatShutter(data.ExposureTime);
+    const iso = data.ISO ? `ISO ${data.ISO}` : null;
+    const focal = data.FocalLength ? `${data.FocalLength}mm` : null;
+    const date = formatDate(data.DateTimeOriginal);
+
+    const rows = [
+      exifRow('Date', date),
+      exifRow('Camera', camera),
+      exifRow('Lens', data.LensModel),
+      exifRow('Aperture', aperture),
+      exifRow('Shutter', shutter),
+      exifRow('ISO', iso),
+      exifRow('Focal Length', focal),
+    ].join('');
+
+    fsExif.insertAdjacentHTML('beforeend', rows);
+  } catch (err) {
+    fsExifLoading.textContent = 'Could not read EXIF.';
+    fsExifLoading.style.display = 'block';
+    console.error(err);
+  }
+}
+
 function updateFS() {
   const key = photos[currentIndex];
   const url = `${BASE_URL}/originals/${key}`;
 
-  // Show spinner, hide image while loading
   fsSpinner.classList.remove('hidden');
   fsViewImage.classList.add('fs-img-hidden');
   fsViewImage.src = '';
 
-  // Load the image
   const tempImg = new Image();
   tempImg.onload = () => {
     fsViewImage.src = url;
@@ -81,6 +151,8 @@ function updateFS() {
     a.target = '_blank';
     a.click();
   };
+
+  loadExif(url);
 }
 
 function nextPhoto() {
@@ -93,7 +165,6 @@ function prevPhoto() {
   updateFS();
 }
 
-// Keyboard navigation
 document.addEventListener('keydown', (e) => {
   if (!fsView.classList.contains('open')) return;
   if (e.key === 'ArrowRight') nextPhoto();
@@ -102,5 +173,4 @@ document.addEventListener('keydown', (e) => {
 });
 
 loadPhotos();
-
 fetch('/api/track', { method: 'GET' });
