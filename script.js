@@ -27,7 +27,7 @@ async function loadPhotos() {
       const img = document.createElement('img');
       img.alt = key;
       img.onload = () => img.classList.add('loaded');
-      img.src = `${BASE_URL}/${key}`;
+      img.src = `${BASE_URL}/thumbs/${key}`;
 
       item.appendChild(img);
       gallery.appendChild(item);
@@ -53,7 +53,7 @@ function closeFS() {
 
 function updateFS() {
   const key = photos[currentIndex];
-  const url = `${BASE_URL}/${key}`;
+  const url = `${BASE_URL}/originals/${key}`;
 
   // Show spinner, hide image while loading
   fsSpinner.classList.remove('hidden');
