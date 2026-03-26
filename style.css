@@ -470,6 +470,10 @@ footer {
   flex-direction: column;
   gap: 1.25rem;
   align-self: center;
+  position: absolute;
+  right: -220px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .fs-exif-title {
@@ -523,5 +527,33 @@ footer {
   }
   .fs-exif-title {
     width: 100%;
+  }
+}
+
+/* ── EXIF PANEL POSITION FIX ── */
+.fs-content {
+  justify-content: center;
+}
+
+@media (max-width: 1200px) {
+  .fs-exif {
+    position: static;
+    transform: none;
+    width: 100%;
+    min-width: unset;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .fs-exif-title {
+    width: 100%;
+  }
+  .fs-content {
+    flex-direction: column;
+  }
+  .fs-content img {
+    max-width: 90vw;
+    max-height: 60vh;
   }
 }
