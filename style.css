@@ -22,7 +22,7 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ── NAV ── */
+/* NAV */
 nav {
   position: fixed;
   top: 0;
@@ -83,7 +83,7 @@ nav {
   color: var(--text);
 }
 
-/* ── HAMBURGER BUTTON ── */
+/* HAMBURGER BUTTON (navigation) */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -123,7 +123,7 @@ nav {
   transform: translateY(-6.5px) rotate(-45deg);
 }
 
-/* ── DROPDOWN MENU ── */
+/* DROPDOWN MENU */
 .nav-dropdown {
   display: none;
   position: fixed;
@@ -168,7 +168,6 @@ nav {
   .nav-toggle { display: flex; }
 }
 
-/* ── MAIN ── */
 main {
   padding-top: calc(var(--nav-h) + 2rem);
   padding-bottom: 4rem;
@@ -178,7 +177,7 @@ main {
   margin: 0 auto;
 }
 
-/* ── GALLERY GRID ── */
+/* GALLERY GRID */
 #gallery {
   columns: 4 280px;
   column-gap: 0.75rem;
@@ -222,7 +221,7 @@ main {
   background: rgba(0,0,0,0.15);
 }
 
-/* ── LOADING ── */
+/* LOADING */
 .loading {
   text-align: center;
   color: var(--muted);
@@ -235,7 +234,7 @@ main {
   display: none;
 }
 
-/* ── FULLSCREEN VIEW ── */
+/* FULLSCREEN VIEW */
 .fs-view {
   display: none;
   position: fixed;
@@ -281,7 +280,7 @@ main {
   opacity: 0;
 }
 
-/* ── FULLSCREEN SPINNER ── */
+/* FULLSCREEN SPINNER */
 .fs-spinner {
   position: absolute;
   top: 50%;
@@ -352,14 +351,14 @@ main {
   letter-spacing: 0.06em;
 }
 
-/* ── KEYBOARD HINT ── */
+/* KEYBOARD HINT */
 @keyframes fadeout {
   0% { opacity: 1; }
   80% { opacity: 1; }
   100% { opacity: 0; }
 }
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media (max-width: 600px) {
   nav { padding: 0 1rem; }
   main { padding-left: 0.75rem; padding-right: 0.75rem; }
@@ -368,7 +367,7 @@ main {
   .nav-links { gap: 1rem; }
 }
 
-/* ── BUTTONS ── */
+/* BUTTONS */
 .btn {
   display: inline-block;
   color: var(--text);
@@ -389,13 +388,13 @@ main {
   border-color: #444;
 }
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media (max-width: 600px) {
   nav { padding: 0 1rem; }
   .nav-links { gap: 1rem; }
 }
 
-/* ── FOOTER ── */
+/* FOOTER */
 footer {
   position: fixed;
   bottom: 0;
@@ -444,7 +443,7 @@ footer {
   fill: currentColor;
 }
 
-/* ── FULLSCREEN SIDE PANEL LAYOUT ── */
+/* FULLSCREEN SIDE PANEL LAYOUT */
 .fs-content {
   flex-direction: row;
   gap: 2rem;
@@ -462,7 +461,7 @@ footer {
   max-width: 75vw;
 }
 
-/* ── EXIF PANEL ── */
+/* EXIF PANEL */
 .fs-exif {
   width: 200px;
   min-width: 200px;
@@ -530,7 +529,7 @@ footer {
   }
 }
 
-/* ── EXIF PANEL POSITION FIX ── */
+/* EXIF PANEL POSITION FIX */
 .fs-content {
   justify-content: center;
 }
@@ -556,4 +555,32 @@ footer {
     max-width: 90vw;
     max-height: 60vh;
   }
+}
+
+.scroll-hint {
+  position: fixed;
+  bottom: 50vh;
+  right: 10vw;
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  animation: scroll-bounce 2.2s ease-in-out infinite;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hidden-scroll-hint {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+@media (max-width: 1000px)  {
+  .scroll-hint {
+    display: none;
+  }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
 }

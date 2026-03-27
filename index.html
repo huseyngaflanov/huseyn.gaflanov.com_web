@@ -46,7 +46,7 @@
         background: var(--muted);
       }
 
-      /* ── MAIN VIDEO BACKGROUND ── */
+      /* MAIN VIDEO BACKGROUND */
       main {
         position: relative;
         height: 100vh;
@@ -61,7 +61,7 @@
         inset: 0;
         z-index: 0;
         overflow: hidden;
-        border-radius: 0; /* match main if needed */
+        border-radius: 0;
         opacity: 0;
         transition: opacity 1.8s ease;
         pointer-events: none;
@@ -91,7 +91,7 @@
         background: rgba(0, 0, 0, 0.75);
       }
 
-      /* Make sure main's children sit above the video */
+      /* all elements above the video */
       main > *:not(.main-video-bg) {
         position: relative;
         z-index: 1;
@@ -114,7 +114,7 @@
       </button>
     </nav>
 
-    <!-- Mobile dropdown -->
+    <!-- Mobile dropdown navigation -->
     <div class="nav-dropdown" id="nav-dropdown">
       <a href="photography.html">Photos</a>
       <a href="about.html">About</a>

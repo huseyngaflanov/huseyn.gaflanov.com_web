@@ -3,15 +3,134 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Huseyn Gaflanov</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <title>About — Huseyn Gaflanov</title>
+    <style>
+      .about-wrap {
+        max-width: 640px;
+        margin: 0 auto;
+        padding-top: calc(var(--nav-h) + 4rem);
+        padding-bottom: 6rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .about-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 1.25rem;
+      }
+
+      .about-name {
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+        font-size: clamp(2rem, 6vw, 3.5rem);
+        color: var(--text);
+        line-height: 1.1;
+        margin-bottom: 2.5rem;
+      }
+
+      .about-divider {
+        width: 40px;
+        height: 1px;
+        background: var(--border);
+        margin-bottom: 2.5rem;
+      }
+
+      .about-bio {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--text);
+        opacity: 0.85;
+        margin-bottom: 3.5rem;
+      }
+
+      /* SECTION TITLE */
+      .section-title {
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      /* GEAR */
+      .gear-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 3.5rem;
+      }
+
+      .gear-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.9rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .gear-item:first-child {
+        border-top: none;
+      }
+
+      .gear-name {
+        font-size: 0.9rem;
+        color: var(--text);
+      }
+
+      .gear-type {
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      /* CONTACT */
+      .contact-block {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 3.5rem;
+      }
+
+      .contact-block p {
+        font-size: 0.875rem;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .contact-email {
+        display: inline-block;
+        font-size: 0.95rem;
+        color: var(--text);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 2px;
+        transition: border-color 0.2s, color 0.2s;
+        margin-top: 0.25rem;
+      }
+
+      .contact-email:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+    </style>
   </head>
   <body>
+
     <nav>
       <span class="nav-name"><a href="index.html">Huseyn Gaflanov</a></span>
       <div class="nav-links">
         <a href="photography.html">Photos</a>
-        <a href="about.html">About</a>
+        <a href="about.html" style="color: var(--text);">About</a>
         <a href="projects.html">Projects</a>
       </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
@@ -21,16 +140,60 @@
       </button>
     </nav>
 
-    <!-- Mobile dropdown -->
     <div class="nav-dropdown" id="nav-dropdown">
       <a href="photography.html">Photos</a>
       <a href="about.html">About</a>
       <a href="projects.html">Projects</a>
     </div>
 
-    <main style="display: flex; flex: 1; flex-direction: column; align-items: center;">
+    <main>
+      <div class="about-wrap">
+
+        <p class="about-label">About</p>
+        <h1 class="about-name">Huseyn Gaflanov</h1>
+        <div class="about-divider"></div>
+
+        <p class="about-bio">
+          Student athlete and basketball player with a curiosity that doesn't stay in one lane.
+          Outside of sport, I spend my time in music, tech, and photography — finding the overlap
+          between discipline and creativity. My photos are an extension of how I see the world:
+          direct, uncluttered, and honest.
+        </p>
+
+        <!-- Gear -->
+        <p class="section-title">Photo Gear</p>
+        <div class="gear-list">
+          <div class="gear-item">
+            <span class="gear-name">Canon EOS 4000D</span>
+            <span class="gear-type">Body</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-name">EF-S 18–55mm f/3.5–5.6 IS II</span>
+            <span class="gear-type">Kit Lens</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-name">EF 50mm f/1.8 STM</span>
+            <span class="gear-type">Prime</span>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <p class="section-title">Contact</p>
+        <div class="contact-block">
+          <p>For collaborations, inquiries, or just to say hello.</p>
+          <a class="contact-email" href="mailto:huseyn@gaflanov.com">huseyn@gaflanov.com</a>
+        </div>
+
+      </div>
+
 
     </main>
+
+    <div class="scroll-hint" id="scroll-hint">
+      <svg width="28" height="28" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 3v14M4 11l6 6 6-6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
 
     <footer>
       <span class="footer-copy">Huseyn Gaflanov &mdash; All rights reserved.</span>
@@ -65,6 +228,10 @@
       toggle.addEventListener('click', () => {
         toggle.classList.toggle('open');
         dropdown.classList.toggle('open');
+      });
+
+      window.addEventListener('scroll', () => {
+        document.getElementById('scroll-hint').classList.add("hidden-scroll-hint");
       });
     </script>
   </body>
