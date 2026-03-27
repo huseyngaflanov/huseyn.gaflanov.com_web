@@ -15,7 +15,6 @@
       }
 
       .hero {
-        height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -46,6 +45,57 @@
         height: 1px;
         background: var(--muted);
       }
+
+      /* ── MAIN VIDEO BACKGROUND ── */
+      main {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .main-video-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        border-radius: 0; /* match main if needed */
+        opacity: 0;
+        transition: opacity 1.8s ease;
+        pointer-events: none;
+
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+      }
+
+      .main-video-bg.visible {
+        opacity: 1;
+      }
+
+      .main-video-bg video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .main-video-bg::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+      }
+
+      /* Make sure main's children sit above the video */
+      main > *:not(.main-video-bg) {
+        position: relative;
+        z-index: 1;
+      }
     </style>
   </head>
   <body>
@@ -71,12 +121,21 @@
       <a href="projects.html">Projects</a>
     </div>
 
-    <div class="hero">
-      <p>Welcome</p>
-      <div class="hero-divider"></div>
-      <h1>Huseyn Gaflanov</h1>
-      <a href="photography.html" class="btn" style="margin-top: 1rem;">View Portfolio</a>
-    </div>
+    <main>
+      <div class="main-video-bg" id="main-video-bg">
+        <video autoplay muted loop playsinline preload="auto">
+          <source src="" type="video/webm">
+          <source src="https://pub-67f966122c5349318de9457c10586d97.r2.dev/videoplayback.1774648775066.publer.com.mp4"  type="video/mp4">
+        </video>
+      </div>
+
+      <div class="hero">
+        <p>Welcome</p>
+        <div class="hero-divider"></div>
+        <h1>Huseyn Gaflanov</h1>
+        <a href="photography.html" class="btn" style="margin-top: 1rem;">View Portfolio</a>
+      </div>
+    </main>
 
     <footer>
       <span class="footer-copy">Huseyn Gaflanov &mdash; All rights reserved.</span>
@@ -112,6 +171,9 @@
         toggle.classList.toggle('open');
         dropdown.classList.toggle('open');
       });
+      setTimeout(() => {
+        document.getElementById('main-video-bg').classList.add('visible');
+      }, 3000);
       fetch('/api/track', { method: 'GET' });
     </script>
   </body>
