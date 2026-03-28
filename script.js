@@ -99,7 +99,9 @@ async function loadExif(url) {
       return;
     }
 
-    const camera = [data.Make, data.Model].filter(Boolean).join(' ');
+    const camera = (data.Make && data.Model?.startsWith(data.Make))
+      ? data.Model
+      : [data.Make, data.Model].filter(Boolean).join(' ');
     const aperture = data.FNumber ? `f/${data.FNumber}` : null;
     const shutter = formatShutter(data.ExposureTime);
     const iso = data.ISO ? `ISO ${data.ISO}` : null;
