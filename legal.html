@@ -7,13 +7,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="toc.css">
     <title>Huseyn Gaflanov – Terms</title>
     <style>
-
-      html {
-        scroll-behavior: smooth;
-      }
-
+    
       .hero {
         display: flex;
         flex-direction: column;
@@ -84,56 +81,6 @@
         height: 1px;
         background: var(--border);
         margin-bottom: 3rem;
-      }
-
-      /* TOC */
-      .legal-toc {
-        display: flex;
-        position: fixed;
-        left: 12rem;
-        top: 25vh;
-        flex-direction: column;
-        gap: 0;
-      }
-
-      .legal-toc a {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.8rem 0;
-        border-bottom: 1px solid var(--border);
-        color: var(--muted);
-        text-decoration: none;
-        font-size: 0.8rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        transition: color 0.2s;
-      }
-
-      .legal-toc a:hover {
-        color: var(--text);
-      }
-
-      .legal-toc a::after {
-        content: '↓';
-        font-size: 0.75rem;
-        opacity: 0.4;
-      }
-
-      @media (max-width: 1340px) {
-        .legal-toc {
-          left: 2rem;
-        }
-      }
-
-      @media (max-width: 1000px) {
-        .legal-toc {
-          display: none;
-        }
-      }
-
-      .legal-toc a.toc-active {
-        color: var(--text);
       }
 
       /* ── SECTIONS ── */
@@ -234,7 +181,7 @@
         <div class="legal-divider"></div>
 
         <!-- Table of contents -->
-        <div class="legal-toc">
+        <div class="toc">
           <a href="#terms">Terms of Use</a>
           <a href="#copyright">Copyright</a>
           <a href="#privacy">Privacy Policy</a>
@@ -343,12 +290,12 @@
 
       // TOC active highlight on scroll
       const sections = document.querySelectorAll('.legal-section');
-      const tocLinks = document.querySelectorAll('.legal-toc a');
+      const tocLinks = document.querySelectorAll('.toc a');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             tocLinks.forEach(link => link.classList.remove('toc-active'));
-            const active = document.querySelector(`.legal-toc a[href="#${entry.target.id}"]`);
+            const active = document.querySelector(`.toc a[href="#${entry.target.id}"]`);
             if (active) active.classList.add('toc-active');
           }
         });

@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="toc.css">
     <title>About — Huseyn Gaflanov</title>
     <style>
       .about-wrap {
@@ -147,13 +148,21 @@
     </div>
 
     <main>
+      <!-- Table of contents -->
+      <div class="toc">
+        <a href="#about-bio-p">Bio</a>
+        <a href="#gear-list">Photo Gear</a>
+        <a href="#tech-list">Tech</a>
+        <a href="#disclaimer">Disclaimer</a>
+        <a href="#contact-block">Contact</a>
+      </div>
       <div class="about-wrap">
 
-        <p class="about-label">About</p>
-        <h1 class="about-name">Huseyn Gaflanov</h1>
+        <p class="about-label" id="about-bio-p">About</p>
+        <h1 class="about-name" >Huseyn Gaflanov</h1>
         <div class="about-divider"></div>
 
-        <p class="about-bio">
+        <p id="about-bio" class="about-bio section">
           Student athlete and basketball player with a curiosity that doesn't stay in one lane.
           Outside of sport, I spend my time in music, tech, and photography — finding the overlap
           between discipline and creativity. My photos are an extension of how I see the world:
@@ -162,7 +171,7 @@
 
         <!-- Gear -->
         <p class="section-title">Photo Gear</p>
-        <div class="gear-list">
+        <div class="gear-list section" id="gear-list">
           <div class="gear-item">
             <span class="gear-name">Canon EOS 4000D</span>
             <span class="gear-type">Body</span>
@@ -177,9 +186,42 @@
           </div>
         </div>
 
+        <!-- Tech -->
+        <p class="section-title">Tech</p>
+        <div class="gear-list section" id="tech-list">
+          <div class="gear-item">
+            <span class="gear-name">MacBook Air M2</span>
+            <span class="gear-type">Computer</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-name">iPhone 16 Pro</span>
+            <span class="gear-type">Phone</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-name">PlayStation 5</span>
+            <span class="gear-type">Console</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-name">PlayStation 4</span>
+            <span class="gear-type">Console</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-name">PS Vita</span>
+            <span class="gear-type">Handheld</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-name">Canon EOS 4000D</span>
+            <span class="gear-type">Camera</span>
+          </div>
+          <div class="gear-item">
+            <span class="gear-name">Sony WH-1000XM4</span>
+            <span class="gear-type">Headphones</span>
+          </div>
+        </div>
+
         <!-- Contact -->
         <p class="section-title">Contact</p>
-        <div class="contact-block">
+        <div class="contact-block section" id="contact-block">
           <p>For collaborations, inquiries, or just to say hello.</p>
           <a class="contact-email" href="mailto:huseyn@gaflanov.com">huseyn@gaflanov.com</a>
         </div>
@@ -233,6 +275,22 @@
       window.addEventListener('scroll', () => {
         document.getElementById('scroll-hint').classList.add("hidden-scroll-hint");
       });
+
+      // TOC active highlight on scroll
+      const sections = document.querySelectorAll('.section');
+      const tocLinks = document.querySelectorAll('.toc a');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach(link => link.classList.remove('toc-active'));
+            const active = document.querySelector(`.toc a[href="#${entry.target.id}"]`);
+            if (active) active.classList.add('toc-active');
+          }
+        });
+      }, {
+        rootMargin: '-50% 0px -30% 0px'
+      });
+      sections.forEach(section => observer.observe(section));
     </script>
   </body>
 </html>
