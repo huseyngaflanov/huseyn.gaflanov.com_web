@@ -567,12 +567,37 @@ footer {
   color: var(--muted);
   animation: scroll-bounce 2.2s ease-in-out infinite;
   z-index: 10;
-  pointer-events: none;
+  border-radius: 50%;
+  transition: all 0.5s ease;
 }
 
-.hidden-scroll-hint {
+.scroll-hint svg {
+  transition: transform 0.3s ease;
+
+}
+
+.top-scroll-hint {
+
+  cursor: pointer;
+}
+
+.top-scroll-hint svg {
+  transform: rotate(180deg);
+}
+
+.hidden-scroll-hint svg {
+  transform: rotate(180deg);
   opacity: 0;
   transition: opacity 0.5s ease;
+  cursor: default;
+}
+
+.bottom-scroll-hint {
+  transform: scale(2);
+}
+
+.bottom-scroll-hint svg {
+  transform: scale(2) rotate(180deg);
 }
 
 @media (max-width: 1000px)  {

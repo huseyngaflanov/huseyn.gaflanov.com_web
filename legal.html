@@ -284,8 +284,29 @@
         toggle.classList.toggle('open');
         dropdown.classList.toggle('open');
       });
+
+      const hint = document.getElementById('scroll-hint');
+      let scrolledBefore = false;
       window.addEventListener('scroll', () => {
-        document.getElementById('scroll-hint').classList.add("hidden-scroll-hint");
+        if (scrolledBefore && window.scrollY === 0) {
+          hint.classList.remove('top-scroll-hint');
+          hint.classList.add('hidden-scroll-hint');
+        } else if (window.scrollY === 0) {
+          hint.classList.remove('top-scroll-hint');
+        } else if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight) {
+          hint.classList.add('bottom-scroll-hint');
+        } else {
+          scrolledBefore = true;
+          hint.classList.remove('bottom-scroll-hint');
+          hint.classList.remove('hidden-scroll-hint');
+          hint.classList.add('top-scroll-hint');
+        }
+      });
+      hint.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
       });
 
       // TOC active highlight on scroll
