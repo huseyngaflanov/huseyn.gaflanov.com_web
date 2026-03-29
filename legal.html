@@ -8,156 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/toc.css">
+    <link rel="stylesheet" href="css/legal.css">
     <link rel="icon" href="src/favicon.ico">
     <title>Huseyn Gaflanov – Terms</title>
-    <style>
-
-      .hero {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.25rem;
-        text-align: center;
-        padding: 0 2rem;
-      }
-
-      .hero h1 {
-        font-family: "Playfair Display", serif;
-        font-weight: 400;
-        font-size: clamp(2.5rem, 8vw, 6rem);
-        letter-spacing: 0.02em;
-        color: var(--text);
-        line-height: 1.1;
-      }
-
-      .hero p {
-        font-size: 0.875rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-
-      .hero-divider {
-        width: 40px;
-        height: 1px;
-        background: var(--muted);
-      }
-
-      .legal-wrap {
-        max-width: 680px;
-        margin: 0 auto;
-        padding-top: calc(var(--nav-h) + 4rem);
-        padding-bottom: 6rem;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
-
-      .legal-label {
-        font-size: 0.7rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 1.25rem;
-      }
-
-      .legal-title {
-        font-family: "Playfair Display", serif;
-        font-weight: 400;
-        font-size: clamp(2rem, 6vw, 3.5rem);
-        color: var(--text);
-        line-height: 1.1;
-        margin-bottom: 0.75rem;
-      }
-
-      .legal-updated {
-        font-size: 0.75rem;
-        letter-spacing: 0.08em;
-        color: var(--muted);
-        margin-bottom: 3rem;
-      }
-
-      .legal-divider {
-        width: 40px;
-        height: 1px;
-        background: var(--border);
-        margin-bottom: 3rem;
-      }
-
-      /* ── SECTIONS ── */
-      .legal-section {
-        margin-bottom: 3.5rem;
-        scroll-margin-top: calc(var(--nav-h) + 2rem);
-      }
-
-      .legal-section-title {
-        font-size: 0.7rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--muted);
-        margin-bottom: 1.25rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .legal-section p {
-        font-size: 0.9rem;
-        line-height: 1.85;
-        color: var(--text);
-        opacity: 0.8;
-        margin-bottom: 1rem;
-      }
-
-      .legal-section p:last-child {
-        margin-bottom: 0;
-      }
-
-      .legal-section ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.6rem;
-        margin-bottom: 1rem;
-      }
-
-      .legal-section ul li {
-        font-size: 0.9rem;
-        line-height: 1.7;
-        color: var(--text);
-        opacity: 0.8;
-        padding-left: 1rem;
-        position: relative;
-      }
-
-      .legal-section ul li::before {
-        content: '—';
-        position: absolute;
-        left: 0;
-        color: var(--muted);
-      }
-
-      .legal-contact-link {
-        color: var(--text);
-        text-decoration: none;
-        border-bottom: 1px solid var(--border);
-        padding-bottom: 1px;
-        transition: border-color 0.2s, color 0.2s;
-      }
-
-      .legal-contact-link:hover {
-        color: var(--accent);
-        border-color: var(--accent);
-      }
-    </style>
   </head>
   <body>
 
     <nav>
       <span class="nav-name"><a href="index.html">Huseyn Gaflanov</a></span>
       <div class="nav-links">
-        <a href="photography.html">Photos</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
+        <a href="photography.html" class="nav-photography">Photos</a>
+        <a href="basketball.html" class="nav-basketball">Basketball</a>
+        <a href="about.html" class="nav-about">About</a>
+        <a href="projects.html" class="nav-projects">Projects</a>
       </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
         <span></span>

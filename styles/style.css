@@ -85,6 +85,11 @@ nav {
   color: var(--text);
 }
 
+
+.nav-links a.nav-basketball {
+  transition: all 0.5s ease;
+}
+
 .nav-links a.nav-basketball:hover {
   color: var(--basketball);
   text-shadow:
@@ -94,6 +99,7 @@ nav {
     0 0 42px var(--basketball),
     0 0 82px var(--basketball),
     0 0 92px var(--basketball);
+  transform: translateY(-1px);
 }
 
 /* HAMBURGER BUTTON (navigation) */

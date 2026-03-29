@@ -7,56 +7,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="css/404.css">
     <link rel="icon" href="src/favicon.ico">
     <title>Huseyn Gaflanov</title>
-    <style>
-      html, body {
-        height: 100vh;
-        overflow: hidden;
-      }
-
-      .hero {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.25rem;
-        text-align: center;
-        padding: 0 2rem;
-      }
-
-      .hero h1 {
-        font-family: "Playfair Display", serif;
-        font-weight: 400;
-        font-size: clamp(2.5rem, 8vw, 6rem);
-        letter-spacing: 0.02em;
-        color: var(--text);
-        line-height: 1.1;
-      }
-
-      .hero p {
-        font-size: 0.875rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--muted);
-      }
-
-      .hero-divider {
-        width: 40px;
-        height: 1px;
-        background: var(--muted);
-      }
-    </style>
   </head>
   <body>
 
     <nav>
       <span class="nav-name"><a href="index.html">Huseyn Gaflanov</a></span>
       <div class="nav-links">
-        <a href="photography.html">Photos</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
+        <a href="photography.html" class="nav-photography">Photos</a>
+        <a href="basketball.html" class="nav-basketball">Basketball</a>
+        <a href="about.html" class="nav-about">About</a>
+        <a href="projects.html" class="nav-projects">Projects</a>
       </div>
       <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
         <span></span>
